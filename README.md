@@ -37,7 +37,7 @@ Since NodeMCU provides a nice Lua [REPL(Read-Eval-Print-Loop)](https://en.wikipe
 
 - [Flash the latest NodeMCU firmware](https://nodemcu.readthedocs.io/en/master/en/flash/) on your ESP8266, it's a little difficult for beginner, and you need a USB->TTL adapter which costs $1-2 dollers.
 
-- Upload [init.lua](/MagicCube/esp-iot-adapter-arduino/tree/master/nodemcu-lua/init.lua) to ESP8266
+- Upload [init.lua](/MagicCube/esp-iot-adapter-arduino/tree/master/nodemcu-lua-src/init.lua) to ESP8266
 
 - Restart
 

@@ -22,6 +22,7 @@ public:
     void setData(String key, double value);
     void setData(String key, String value);
 
+private:
     SoftwareSerial *_serial;
 };
 
