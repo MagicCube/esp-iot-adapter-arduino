@@ -29,6 +29,7 @@ Now just wire the ESP8266 to Arduino like this below, it will allow you to start
 
 Since NodeMCU provides a nice Lua [REPL(Read-Eval-Print-Loop)](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) over the serial port, Arduino can now talk to ESP8266 via our Lua API.
 
+Using the Arduino IDE built-in example of SoftwareSerial, you can test the Lua REPL by yourself.
 ![image](https://cloud.githubusercontent.com/assets/1003147/18205249/93e4e748-7153-11e6-86ce-aed49aae8ad6.png)
 
 Of course you don't need to do it by yourself, all you need to do is to include this library into your project, and invoke API to link your Arduino and sensors to the internet world.
@@ -40,6 +41,7 @@ Of course you don't need to do it by yourself, all you need to do is to include 
 ### Pre-requirements on ESP8266
 
 - [Flash the latest NodeMCU firmware](https://nodemcu.readthedocs.io/en/master/en/flash/) on your ESP8266, it's a little difficult for beginner, and you need a USB->TTL adapter which costs $1-2 dollers.
+![](http://iot-playground.com/images/articles/016/esp8266-reflash-firmware.png)
 
 - Upload [init.lua](nodemcu-lua-src/init.lua) to ESP8266
 
