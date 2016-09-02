@@ -101,6 +101,7 @@ Upload and run the code above in your Arduino, then open your web browser and vi
 `http://<your-esp8266-ip-address>/data`.
 
 Here's a simple example to demonstrate how to invoke the HTTP RESTful API in your website.
+The HTML file is also located in the [examples](/MagicCube/esp-iot-adapter-arduino/tree/master/examples/WiFiThermometer/example.html) directory.
 
 ```html
 <!DOCTYPE html>
