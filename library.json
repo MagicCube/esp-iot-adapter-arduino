@@ -1,0 +1,13 @@
+{
+  "name": "ESP8266IoTAdapter",
+  "keywords": "wifi, wi-fi, http, web, server, client, esp8266, iot",
+  "description": "A simple way to link Arduino and ESP8266 together to make cool IoT projects.",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/MagicCube/esp-iot-adapter-arduino.git"
+  },
+  "exclude": "doc",
+  "frameworks": "arduino",
+  "platforms": "atmelavr"
+}
