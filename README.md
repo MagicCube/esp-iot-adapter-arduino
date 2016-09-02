@@ -27,7 +27,11 @@ Now just wire the ESP8266 to Arduino like this below, it will allow you to start
 
 ![](http://1.bp.blogspot.com/-7xvaGr9qh6k/VTAjlqCqorI/AAAAAAAAO5A/znApDt0tW_w/s1600/ESP8266_arduino_basic_bb.png)
 
-Since NodeMCU provides a nice Lua [REPL(Read-Eval-Print-Loop)](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) over the serial port, Arduino can now talk to ESP8266 via our Lua API. And of course you don't need to do it by yourself, all you need to do is to include this library into your project, and invoke API to link your Arduino and sensors to the internet world.
+Since NodeMCU provides a nice Lua [REPL(Read-Eval-Print-Loop)](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) over the serial port, Arduino can now talk to ESP8266 via our Lua API.
+
+![image](https://cloud.githubusercontent.com/assets/1003147/18205249/93e4e748-7153-11e6-86ce-aed49aae8ad6.png)
+
+Of course you don't need to do it by yourself, all you need to do is to include this library into your project, and invoke API to link your Arduino and sensors to the internet world.
 
 > I was a Microsoft .NET Bluetooth AT command expert 12 years ago when I was in the college, but it's time to say good bye to the out-of-date AT Command (> . <).
 
