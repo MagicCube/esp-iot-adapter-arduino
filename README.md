@@ -15,7 +15,7 @@ After searched on Google and Youtube, I found so many articles talking about how
 
 ## How It Works
 
-My idea is to replace the AT Command with a simple protocol or computer language, and then I found [NodeMCU - a lua based firmware](https://nodemcu.readthedocs.io/en/master/). By leverage its powerful SDK, I build a suite of APIs which support very simple but useful features including WiFi configuring,  data updating and basic RESTful service. 
+My idea is to replace the AT Command with a simple protocol or computer language, and then I found [NodeMCU - a lua based firmware](https://nodemcu.readthedocs.io/en/master/). By leverage its powerful SDK, I build a suite of APIs which support very simple but useful features including WiFi configuring,  data updating and basic RESTful service.
 
 Another problem is baud rate, don't worry, in my Lua script, I already change it to 9600 by default, so now Arduino can catch up with ESP8266.
 
@@ -78,7 +78,7 @@ void setup()
     * Or you can use configAP() to run in Soft AP mode:
     * esp.configAP("Your SSID", "password");
     */
-  
+
     // Start HTTP server on ESP8266
     esp.startServer();
     Serial.print("HTTP Server is now started.");
@@ -89,7 +89,7 @@ void loop()
     // Read temperature value from Analog PIN 0
   	double temperature = analogRead(0) * (5000 / 1024);
     // Update values on ESP8266 server every 60 seconds
-    esp.setValue("temperature", temperature);
+    esp.setData("temperature", temperature);
     Serial.print("Temperature: ");
     Serial.println(temperature);
     delay(60 * 1000);
@@ -154,7 +154,7 @@ Returns a JSON object contains everything in the data you set via `setData(key, 
 
 ## Lua API (Uploaded to ESP8266/NodeMCU)
 
-If you decide to implement your own code to talk with my Lua API, here's the guide: 
+If you decide to implement your own code to talk with my Lua API, here's the guide:
 
 >  You can execute the Lua API on Arduino via a SoftwareSerial.
 >
