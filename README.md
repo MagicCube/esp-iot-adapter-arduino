@@ -5,11 +5,13 @@ A simple way to link Arduino and ESP8266 together to make cool IoT projects.
 
 ## Motivation
 
-![](https://evomedia.evothings.com/2015/07/esp8266.jpg)
-
 [ESP8266](https://espressif.com/en/products/hardware/esp8266ex/overview) is a tiny and absolutely the most popular cheap WiFi chip in the world, it will be so great if we can use it as an IoT WiFi adapter to link our Arduino-like boards to the Internet of Things.
 
+![](https://evomedia.evothings.com/2015/07/esp8266.jpg)
+
 After searched on Google and Youtube, I found so many articles talking about how to link them together, but none of them satisfied me since they are far more complicated or even do not fit my need. For example, to run a HTTP service on ESP8266 , many posts suggest you to send AT Command from Arduino via [SoftwareSerial](https://www.arduino.cc/en/Reference/SoftwareSerial), however it often fails because of the default baud rate on ESP8266 IS 115200 which is too fast for Arduino Uno's Software Serial(normally uses 9600).
+
+
 
 ## How It Works
 
@@ -29,7 +31,9 @@ Since NodeMCU provides a nice Lua [REPL(Read-Eval-Print-Loop)](https://en.wikipe
 
 > I was a Microsoft .NET Bluetooth AT command expert 12 years ago when I was in the college, but it's time to say good bye to the out-of-date AT Command (> . <).
 
-### Pre-requirements
+
+
+### Pre-requirements on ESP8266
 
 - [Flash the latest NodeMCU firmware](https://nodemcu.readthedocs.io/en/master/en/flash/) on your ESP8266, it's a little difficult for beginner, and you need a USB->TTL adapter which costs $1-2 dollers.
 
@@ -39,19 +43,122 @@ Since NodeMCU provides a nice Lua [REPL(Read-Eval-Print-Loop)](https://en.wikipe
 
   ​
 
-## Arduino Example
+### Download and Install Arduino Library
 
->  Will upload later. Keep watching this project.
+* Download this [ZIP file](https://codeload.github.com/MagicCube/esp-iot-adapter-arduino/zip/master)
+* In Arduino IDE, click `Sketch > Include Library > Add .ZIP Library`
+* Choose the ZIP file you just downloaded
+
+
+
+## Arduino IoT Project Example
+
+After install the library, you will see the example located in the menu `Example > ESP8266IoTAdapter > WiFi Thermometer`.
+
+```c++
+// ESP8266IoTAdapter Example
+// WiFi Thermometer
+// You need to wire ESP8266's TX to Arduino Pin6 and RX to Arduino Pin7
+// Please also wire a temperature sensor LM35 to analog input Pin0.
+
+#include <SoftwareSerial.h>
+#include <ESP8266IoTAdapter.h>
+
+// Create ESP8266 adapter with a SoftwareSeiral
+SoftwareSerial softSerial(6, 7);
+ESP8266IoTAdapter esp(softSerial);
+
+void setup()
+{
+    Serial.begin(9600);
+    Serial.print("Connecting to WiFi AP...");
+    // Connect ESP8266 to an existing WiFi AP.
+	esp.connectToAP("WiFi SSID", "password");
+    /*
+    * Or you can use configAP() to run in Soft AP mode:
+    * esp.configAP("Your SSID", "password");
+    */
+  
+    // Start HTTP server on ESP8266
+    esp.startServer();
+    Serial.print("HTTP Server is now started.");
+}
+
+void loop()
+{
+    // Read temperature value from Analog PIN 0
+  	double temperature = analogRead(0) * (5000 / 1024);
+    // Update values on ESP8266 server every 60 seconds
+    esp.setValue("temperature", temperature);
+    Serial.print("Temperature: ");
+    Serial.println(temperature);
+    delay(60 * 1000);
+}
+```
+
+Upload and run the code above in your Arduino, then open your web browser and visit:
+
+`http://<your-esp8266-ip-address>/data`.
+
+Here's a simple example to demonstrate how to invoke the HTTP RESTful API in your website.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello to ESP8266</title>
+    <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<section class="temperature">
+    <div class="info">
+		<span class="value">N/A</span>
+		<span class="unit">degree</span>       
+    </div>
+    <div class="last-updated-time"></div>
+</section>
+<script>
+  	function updateTemperature()
+	{
+        $("http://your-esp8266-ip-address/data").then(data => {
+			$(".temperature .value").text(data.temperature);
+			$(".temperature .last-updated-time").text("Last updated at " + new Date());
+			setTimeout(updateTemperature, 60 * 1000);
+        }, function(err) {
+             $(".temperature .value").text("ERR");
+             console.error(err);
+			setTimeout(updateTemperature, 60 * 1000);
+			$(".temperature .last-updated-time").text("Error occured at " + new Date());
+        });
+	}
+    updateTemperature();
+</script>
+</body>
+</html>
+```
+
+
+
+
+
+## HTTP RESTful API
+
+> NOTE: By default, the service adds [allow-cross-origin: *](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) header so you won't have the cross origin access problems.
+
+### GET /data
+
+Returns a JSON object contains everything in the data you set via `setData(key, value)`.
 
 
 
 ## Lua API (Uploaded to ESP8266/NodeMCU)
 
-If you want to implement your own code to talk with my Lua API, here's the guide: 
+If you decide to implement your own code to talk with my Lua API, here's the guide: 
 
 >  You can execute the Lua API on Arduino via a SoftwareSerial.
 >
-> NOTE: Always remember to set the baud rate software serial to 9600.
+>  NOTE: Always remember to set the baud rate software serial to 9600.
 
 ### connectToAP(ssid[, password])
 
@@ -67,13 +174,3 @@ Set a specific `value` of given `key`.
 ### startServer()
 
 Start a local HTTP RESTful service at port 80.
-
-
-
-## HTTP RESTful API
-
-> NOTE: By default, the service adds [allow-cross-origin: *](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) header so you won't have the cross origin access problems.
-
-### GET http://\<your-esp8266-ip-address\>/data
-
-Returns a JSON object contains everything in the data you set via `setData(key, value)`.
