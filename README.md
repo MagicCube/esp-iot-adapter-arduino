@@ -37,7 +37,7 @@ Since NodeMCU provides a nice Lua [REPL(Read-Eval-Print-Loop)](https://en.wikipe
 
 - [Flash the latest NodeMCU firmware](https://nodemcu.readthedocs.io/en/master/en/flash/) on your ESP8266, it's a little difficult for beginner, and you need a USB->TTL adapter which costs $1-2 dollers.
 
-- Upload [init.lua](/MagicCube/esp-iot-adapter-arduino/tree/master/nodemcu-lua-src/init.lua) to ESP8266
+- Upload [init.lua](nodemcu-lua-src/init.lua) to ESP8266
 
 - Restart
 
@@ -101,7 +101,7 @@ Upload and run the code above in your Arduino, then open your web browser and vi
 `http://<your-esp8266-ip-address>/data`.
 
 Here's a simple example to demonstrate how to invoke the HTTP RESTful API in your website.
-The HTML file is also located in the [examples](/MagicCube/esp-iot-adapter-arduino/tree/master/examples/WiFiThermometer/example.html) directory.
+The HTML file is also located in the [examples](examples/WiFiThermometer/example.html) directory.
 
 ```html
 <!DOCTYPE html>
