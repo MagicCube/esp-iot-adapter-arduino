@@ -3,14 +3,14 @@ uart.setup(0, 9600, 8, uart.PARITY_NONE, uart.STOPBITS_1, 1)
 data = {}
 
 function connectToAP(ssid, password)
+    if password == nil then
+        password = ""
+    end
     wifi.setmode(wifi.STATION)
     wifi.sta.config(ssid, password, 1)
 end
 
 function configAP(ssid, password)
-	if password == nil then
-		password = ""
-	end
     wifi.setmode(wifi.SOFTAP)
     if password == nil or password == "" then
         wifi.ap.config({
