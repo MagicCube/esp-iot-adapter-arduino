@@ -7,8 +7,11 @@ function connectToAP(ssid, password)
     wifi.sta.config(ssid, password, 1)
 end
 
-function startAP(ssid, password)
-    wifi.setmode(wifi.STATIONAP)
+function configAP(ssid, password)
+	if password == nil then
+		password = ""
+	end
+    wifi.setmode(wifi.SOFTAP)
     if password == nil or password == "" then
         wifi.ap.config({
             ssid = ssid,
