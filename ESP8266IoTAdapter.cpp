@@ -112,17 +112,17 @@ bool ESP8266IoTAdapter::restartServer()
 
 bool ESP8266IoTAdapter::setValue(String key, bool value)
 {
-    return execute("=setValue(\"" + key + "\", \"" + value + "\")");
+    return execute("=setValue(\"" + key + "\", " + (value == true ? "true" : "false") + ")");
 }
 
 bool ESP8266IoTAdapter::setValue(String key, int value)
 {
-    return execute("=setValue(\"" + key + "\", \"" + value + "\")");
+    return execute("=setValue(\"" + key + "\", " + value + ")");
 }
 
 bool ESP8266IoTAdapter::setValue(String key, double value)
 {
-    return execute("=setValue(\"" + key + "\", \"" + value + "\")");
+    return execute("=setValue(\"" + key + "\", " + value + ")");
 }
 
 bool ESP8266IoTAdapter::setValue(String key, String value)
