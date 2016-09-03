@@ -54,7 +54,7 @@ Of course you don't need to do it by yourself, all you need to do is to include 
 * Download this [ZIP file](https://codeload.github.com/MagicCube/esp-iot-adapter-arduino/zip/master).
 * In Arduino IDE, click `Sketch > Include Library > Add .ZIP Library`.
 * Choose the ZIP file you just downloaded.
-* Import this library to your project by clicking `Sketch > Include Library > ESP8266 IoT Adapter.
+* Import this library to your project by clicking `Sketch > Include Library > ESP8266 IoT Adapter`.
 
 
 
