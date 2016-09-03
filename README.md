@@ -1,4 +1,4 @@
-#esp-iot-adapter-arduino[![](https://api.travis-ci.org/MagicCube/esp-iot-adapter-arduino.svg)](https://travis-ci.org/MagicCube/esp-iot-adapter-arduino)
+#esp-iot-adapter-arduino [![](https://api.travis-ci.org/MagicCube/esp-iot-adapter-arduino.svg)](https://travis-ci.org/MagicCube/esp-iot-adapter-arduino)
 A simple way to link Arduino and ESP8266 together to make cool IoT projects.
 
 
