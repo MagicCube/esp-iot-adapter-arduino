@@ -59,6 +59,9 @@ Of course you don't need to do it by yourself, all you need to do is to include 
 
 ## Arduino IoT Project Example
 
+Wiring
+![](https://github.com/MagicCube/esp-iot-adapter-arduino/blob/master/examples/WiFiThermometer/WiFiThermometer.png?raw=true)
+
 After install the library, you will see the example located in the menu `Example > ESP8266IoTAdapter > WiFi Thermometer`.
 
 ```c++
