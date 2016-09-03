@@ -37,7 +37,7 @@ void loop()
     // Read temperature value from Analog PIN 0
     double temperature = analogRead(0) * (5000 / 1024);
     // Update values on ESP8266 server every 60 seconds
-    esp.setData("temperature", temperature);
+    esp.setValue("temperature", temperature);
     Serial.print("Temperature: ");
     Serial.println(temperature);
     delay(60000);

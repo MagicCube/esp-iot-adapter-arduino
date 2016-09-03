@@ -1,4 +1,5 @@
-uart.setup(0, 9600, 8, uart.PARITY_NONE, uart.STOPBITS_1, 1)
+-- Set baud rate to 9600 and switch off echo
+uart.setup(0, 9600, 8, uart.PARITY_NONE, uart.STOPBITS_1, 0)
 
 data = {}
 
@@ -25,15 +26,27 @@ function configAP(ssid, password)
     end
 end
 
-function setData(key, value)
+function getData()
+    return data;
+end
+
+function getDataString()
+    return cjson.encode(data);
+end
+
+function setValue(key, value)
     data[key] = value;
+end
+
+function getValue(key, value)
+    return data[key];
 end
 
 function startServer()
     server = net.createServer(net.TCP)
     server:listen(80, function(conn)
         conn:on("receive", function(socket, payload)
-            socket:send("HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n" .. cjson.encode(data))
+            socket:send("HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n" .. getDataString())
         end)
         conn:on("sent", function(socket) socket:close() end)
     end)

@@ -17,10 +17,10 @@ public:
 
     void startServer();
 
-    void setData(String key, bool value);
-    void setData(String key, int value);
-    void setData(String key, double value);
-    void setData(String key, String value);
+    void setValue(String key, bool value);
+    void setValue(String key, int value);
+    void setValue(String key, double value);
+    void setValue(String key, String value);
 
 private:
     SoftwareSerial *_serial;

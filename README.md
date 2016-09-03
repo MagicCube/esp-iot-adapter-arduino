@@ -95,7 +95,7 @@ void loop()
     // Read temperature value from Analog PIN 0
   	double temperature = analogRead(0) * (5000 / 1024);
     // Update values on ESP8266 server every 60 seconds
-    esp.setData("temperature", temperature);
+    esp.setValue("temperature", temperature);
     Serial.print("Temperature: ");
     Serial.println(temperature);
     delay(60 * 1000);
@@ -155,7 +155,7 @@ The HTML file is also located in the [examples](examples/WiFiThermometer/example
 
 ### GET /data
 
-Returns a JSON object contains everything in the data you set via `setData(key, value)`.
+Returns a JSON object contains everything in the data you set via `setValue(key, value)`.
 
 
 
@@ -174,7 +174,7 @@ Set ESP8266 to `Station` mode, and connect it to an existing WiFi AP with given 
 ### configAP(ssid[, password])
 Set ESP8266 to `Soft AP` mode by using given `ssid` and `password`. Set `password` to `nil` if you want to use Open Auth.
 
-### setData(key, value)
+### setValue(key, value)
 
 Set a specific `value` of given `key`.
 

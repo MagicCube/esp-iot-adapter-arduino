@@ -49,22 +49,22 @@ void ESP8266IoTAdapter::startServer()
 
 
 
-void ESP8266IoTAdapter::setData(String key, bool value)
+void ESP8266IoTAdapter::setValue(String key, bool value)
 {
 
 }
 
-void ESP8266IoTAdapter::setData(String key, int value)
+void ESP8266IoTAdapter::setValue(String key, int value)
 {
 
 }
 
-void ESP8266IoTAdapter::setData(String key, double value)
+void ESP8266IoTAdapter::setValue(String key, double value)
 {
 
 }
 
-void ESP8266IoTAdapter::setData(String key, String value)
+void ESP8266IoTAdapter::setValue(String key, String value)
 {
 
 }
