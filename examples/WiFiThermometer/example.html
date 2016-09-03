@@ -16,7 +16,7 @@
 <script>
   	function updateTemperature()
 	{
-        $("http://your-esp8266-ip-address/data").then(data => {
+        $.ajax("http://192.168.2.195/data").then(data => {
 			$(".temperature .value").text(data.temperature);
 			$(".temperature .last-updated-time").text("Last updated at " + new Date());
 			setTimeout(updateTemperature, 60 * 1000);
