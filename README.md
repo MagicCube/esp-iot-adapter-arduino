@@ -74,18 +74,24 @@ After install the library, you will see the example located in the menu `Example
  *
  * Setup
  * You need to wire ESP8266's TX to Arduino Pin2 and RX to Arduino Pin3
- * Please also wire a temperature sensor LM35 to analog input Pin1.
+ * Please also wire the temperature sensor LM35 to analog input Pin1.
  *
+ * For more details, please visit
+ * https://github.com/MagicCube/esp-iot-adapter-arduino
  */
 
-/*
- * You need to replace the SSID and password by yourself.
- */
 #include <SoftwareSerial.h>
 #include <ESP8266IoTAdapter.h>
 
+/*
+ * Replace the SSID and password by yourself.
+ */
 const String WIFI_SSID = "Henry's Living Room 2.4GHz";
 const String WIFI_PASSWORD = "PASSWORD";
+
+/*
+ * Wire the temperature sensor LM35 to analog input Pin1.
+ */
 const int LM35_PIN = 1;
 
 bool wifiConnected = false;
