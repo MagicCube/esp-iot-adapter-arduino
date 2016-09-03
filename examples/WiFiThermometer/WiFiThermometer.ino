@@ -27,6 +27,20 @@ void setup()
     * esp.configAP("Your SSID", "password");
     */
 
+    /*
+    * You can use the following APIs to get more details:
+    * # String esp.getIP()
+    * - Returns ESP8266's IP address.
+    *
+    * # int esp.getWifiStatus()
+    * - 0: STA_IDLE,
+    * - 1: STA_CONNECTING,
+    * - 2: STA_WRONGPWD,
+    * - 3: STA_APNOTFOUND,
+    * - 4: STA_FAIL,
+    * - 5: STA_GOTIP.
+    */
+
     // Start HTTP server on ESP8266
     esp.startServer();
     Serial.print("HTTP Server is now started.");

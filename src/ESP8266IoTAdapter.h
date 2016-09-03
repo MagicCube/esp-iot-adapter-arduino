@@ -9,18 +9,27 @@ class ESP8266IoTAdapter
 public:
     ESP8266IoTAdapter(SoftwareSerial &serial, int baudrate = 9600);
 
-    void connectToAP(String ssid, String password);
-    void connectToAP(String ssid);
+    String executeWithResponse(String command);
+    bool execute(String command);
 
-    void configAP(String ssid, String password);
-    void configAP(String ssid);
+    bool connectToAP(String ssid, String password);
+    bool connectToAP(String ssid);
 
-    void startServer();
+    bool configAP(String ssid, String password);
+    bool configAP(String ssid);
 
-    void setValue(String key, bool value);
-    void setValue(String key, int value);
-    void setValue(String key, double value);
-    void setValue(String key, String value);
+    String getIP();
+    int getWifiStatus();
+    bool gotIP();
+
+    bool startServer();
+    bool stopServer();
+    bool restartServer();
+
+    bool setValue(String key, bool value);
+    bool setValue(String key, int value);
+    bool setValue(String key, double value);
+    bool setValue(String key, String value);
 
 private:
     SoftwareSerial *_serial;
