@@ -233,7 +233,7 @@ Returns a JSON object contains everything in the data you set via `setValue(key,
 
 
 
-## Lua API (Uploaded to ESP8266/NodeMCU)
+## API
 
 If you decide to implement your own code to talk with my Lua API, here's the guide:
 
@@ -241,15 +241,15 @@ If you decide to implement your own code to talk with my Lua API, here's the gui
 >
 >  NOTE: Always remember to set the baud rate software serial to 9600.
 
-### connectToAP(ssid[, password])
+### bool connectToAP(ssid[, password])
 
 Set ESP8266 to `Station` mode, and connect it to an existing WiFi AP with given `ssid` and `password`.
 
-### getIP()
+### String getIP()
 
 Get ESP8266's IP address if it get connected(in `Station` mode only).
 
-### getWifiStatus()
+### int getWifiStatus()
 
 Get ESP8266's WIFI Status(in `Station` mode only).
 
@@ -260,32 +260,32 @@ Get ESP8266's WIFI Status(in `Station` mode only).
 - 4: STA_FAIL,
 - 5: STA_GOTIP.
 
-### configAP(ssid[, password])
+### bool configAP(ssid[, password])
 
 Set ESP8266 to `Soft AP` mode by using given `ssid` and `password`. Set `password` to `nil` if you want to use Open Auth.
 
-### getDataJSON()
+### String getDataJSON()
 
 Get a JSON string which contains all the key/values.
 
-### setValue(key, value)
+### bool setValue(key, value)
 
 Set a specific `value` of given `key`.
 
-### getValue(key, value)
+### bool getValue(key, value)
 
 Get a specific `value` of given `key`.
 
-### startServer()
+### bool startServer()
 
 Start a local HTTP RESTful service at port 80.
 As described in NodeMCU document, only one HTTP server can be started in one time.
 
-### stopServer()
+### bool stopServer()
 
 Stop the local HTTP service.
 
-### restartServer()
+### bool restartServer()
 
 Stop and restart the local HTTP service.
 This could be very useful to make sure the HTTP service is running.
