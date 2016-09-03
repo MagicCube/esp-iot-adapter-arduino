@@ -174,6 +174,8 @@ Upload and run the code above in your Arduino, then open your web browser and vi
 
 `http://<your-esp8266-ip-address>/data`.
 
+![image](https://cloud.githubusercontent.com/assets/1003147/18222864/48548bb0-71d7-11e6-9513-11aaa70c292b.png)
+
 Here's a simple example to demonstrate how to invoke the HTTP RESTful API in your website.
 The HTML file is also located in the [examples](examples/WiFiThermometer/example.html) directory.
 
@@ -196,22 +198,23 @@ The HTML file is also located in the [examples](examples/WiFiThermometer/example
 <script>
   	function updateTemperature()
 	{
-        $("http://your-esp8266-ip-address/data").then(data => {
-			$(".temperature .value").text(data.temperature);
-			$(".temperature .last-updated-time").text("Last updated at " + new Date());
-			setTimeout(updateTemperature, 60 * 1000);
-        }, function(err) {
-             $(".temperature .value").text("ERR");
-             console.error(err);
-			setTimeout(updateTemperature, 60 * 1000);
-			$(".temperature .last-updated-time").text("Error occured at " + new Date());
-        });
+            $.ajax("http://your-esp8266-ip-address/data").then(data => {
+	        $(".temperature .value").text(data.temperature);
+	        $(".temperature .last-updated-time").text("Last updated at " + new Date());
+	        setTimeout(updateTemperature, 60 * 1000);
+            }, function(err) {
+                $(".temperature .value").text("ERR");
+                console.error(err);
+	        setTimeout(updateTemperature, 60 * 1000);
+	        $(".temperature .last-updated-time").text("Error occured at " + new Date());
+            });
 	}
     updateTemperature();
 </script>
 </body>
 </html>
 ```
+![image](https://cloud.githubusercontent.com/assets/1003147/18222874/803587be-71d7-11e6-9f54-44e776447db3.png)
 
 
 
