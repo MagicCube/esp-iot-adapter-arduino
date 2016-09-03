@@ -1,4 +1,4 @@
-#esp-iot-adapter-arduino [![](https://api.travis-ci.org/MagicCube/esp-iot-adapter-arduino.svg)](https://travis-ci.org/MagicCube/esp-iot-adapter-arduino)
+#esp-iot-adapter-arduino
 A simple library to link Arduino and ESP8266 together to make cool IoT projects.
 
 
@@ -227,6 +227,10 @@ The HTML file is also located in the [examples](examples/WiFiThermometer/example
 ![image](https://cloud.githubusercontent.com/assets/1003147/18222874/803587be-71d7-11e6-9f54-44e776447db3.png)
 
 
+### Checkout my another IoT project on Github
+[https://github.com/MagicCube/smart-homekit-arduino](https://github.com/MagicCube/smart-homekit-arduino)
+![image](https://cloud.githubusercontent.com/assets/1003147/18223538/01e9ef1a-71ed-11e6-8eb6-a029a819ce13.png)
+![image](https://cloud.githubusercontent.com/assets/1003147/18223539/04e932fc-71ed-11e6-9dd3-f60615fc6e68.png)
 
 
 
