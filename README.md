@@ -196,20 +196,19 @@ The HTML file is also located in the [examples](examples/WiFiThermometer/example
     <div class="last-updated-time"></div>
 </section>
 <script>
-	function updateTemperature()
+	(function updateTemperature()
 	{
 		$.ajax("http://your-esp8266-ip-address/data").then(data => {
 			$(".temperature .value").text(data.temperature);
 			$(".temperature .last-updated-time").text("Last updated at " + new Date());
-			setTimeout(updateTemperature, 60 * 1000);
+			setTimeout(updateTemperature, 10 * 1000);
 		}, function(err) {
 			$(".temperature .value").text("ERR");
 			console.error(err);
-			setTimeout(updateTemperature, 60 * 1000);
+			setTimeout(updateTemperature, 10 * 1000);
 			$(".temperature .last-updated-time").text("Error occured at " + new Date());
 		});
-	}
-	updateTemperature();
+	})();
 </script>
 </body>
 </html>
