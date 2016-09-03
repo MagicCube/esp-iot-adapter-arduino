@@ -28,6 +28,7 @@ public:
 
     bool setValue(String key, bool value);
     bool setValue(String key, int value);
+    bool setValue(String key, long value);
     bool setValue(String key, double value);
     bool setValue(String key, String value);
 

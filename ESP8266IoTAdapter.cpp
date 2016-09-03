@@ -120,6 +120,11 @@ bool ESP8266IoTAdapter::setValue(String key, int value)
     return execute("=setValue(\"" + key + "\", " + value + ")");
 }
 
+bool ESP8266IoTAdapter::setValue(String key, long value)
+{
+    return execute("=setValue(\"" + key + "\", " + value + ")");
+}
+
 bool ESP8266IoTAdapter::setValue(String key, double value)
 {
     return execute("=setValue(\"" + key + "\", " + value + ")");
