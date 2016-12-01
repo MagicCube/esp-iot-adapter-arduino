@@ -3,6 +3,8 @@
 var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
 module.exports = {
     context: path.resolve("./src"),
@@ -11,9 +13,9 @@ module.exports = {
         "normalize.css": path.resolve("./node_modules/normalize.css/normalize.css")
     },
     output: {
-        path: path.resolve("./assets"),
-        publicPath: "/assets",
-        filename: "all-in-one.js"
+        path: path.resolve("./dist"),
+        publicPath: "/",
+        filename: "index.js"
     },
     devServer: {
         contentBase: path.resolve("./")
@@ -23,7 +25,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
-                loaders: [ "babel-loader" ]
+                loader: "babel-loader"
             },
             {
                 test: /\.css/,
@@ -36,10 +38,16 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("./stylesheet.css"),
-        new webpack.ProvidePlugin({
-            "$": "jquery",
-            "jQuery": "jquery"
-        })
+        new ExtractTextPlugin("index.css"),
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: "index.html",
+            inlineSource: ".(js|css)$",
+            minify: {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true
+            }
+        }),
+        new HtmlWebpackInlineSourcePlugin()
     ]
 };
